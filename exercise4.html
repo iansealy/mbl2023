@@ -15,9 +15,6 @@
   <link rel="mask-icon" href="https://www.buschlab.org/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#2d89ef">
   <meta name="theme-color" content="#ffffff">
-  <style>
-    .answer { color: red; }
-  </style>
 </head>
 <body>
 
@@ -79,47 +76,37 @@
     <main>
       <h1>Zebrafish Genome Literacy Workshop 2023</h1>
 
-<h2>Exercise 3 - CRISPR design</h2>
+<h2>Exercise 4 - exploring variation</h2>
 
-<p>Imagine you are planning an experiment to knock out the tfap2a gene using CRISPR/Cas9.</p>
+<p>The missense variant rs180018766 is found in the zebrafish ift88 gene. Find the page associated with this variant in Ensembl. How many transcripts does ift88 have and in how many of them is rs180018766 a missense variant?</p>
 
-<p>Find the Gene page for tfap2a.</p>
+<p>Does the rs180018766 have a consequence for any other genes? If so, what's the ZFIN symbol for that gene?</p>
 
-<p>How many different transcripts are there?</p>
+<p>What is the reference allele for rs180018766 and what is the alternative or variant allele?</p>
 
-<p class="answer">6.</p>
+<p>What is the HGVS name (Human Genome Variation Society nomenclature, which, despite the name, is useful for other organisms too) for this variant with respect to the ENSDART00000110943 transcript?</p>
 
-<p>We want to target exons that appear in all transcripts. Find the stable IDs of exons which are present in all transcripts of tfap2a.</p>
+<p>Why does that HGVS name indicate the variant involves an A to G change, whereas the alleles are listed as T and C?</p>
 
-<ul class="answer">
-<li>ENSDARE00000597910</li>
-<li>ENSDARE00000597893</li>
-<li>ENSDARE00000597878</li>
-<li>ENSDARE00000597872</li>
-<li>ENSDARE00000597861</li>
+<p>Does SIFT predict that the rs180018766 missense variant will be deleterious or tolerated?</p>
+
+<p>Follow the link to view the rs180018766 variant in EVA (the European Variation Archive). In how many sequencing projects has this variant been found?</p>
+
+<p>Find the variant table for ift88. It shows the known variants for the gene. How many other missense variants are known in ift88?</p>
+
+<p>You have resequenced the atp5po gene (ENSDARG00000001788) and found three variants:</p>
+
+<ul>
+<li>C/T at 9:33146126</li>
+<li>A/G at 9:33147350</li>
+<li>A/C at 9:33148752</li>
 </ul>
 
-<p class="answer">Exons may look the same on the graphical view on the Gene page, but may have slightly different start and end sites. You can use the Exons page for each transcript to compare the exons. Exons with identical start and end sites will have the same exon ID.</p>
+<p>Use the Ensembl VEP tool to predict the consequences of these three variants. What are the consequences of the three variants on the canonical transcript of atp5po?</p>
 
-<p>Use Biomart to download the sequence for these exons. Use the exon IDs you collected above to download the exons sequences with 10 bp of intron sequence on either side. The 10 bp allows you to find CRISPR sites that overlap a small portion of the intron, but still have their cut-site within the exon.</p>
+<p>Using <a href="https://www.ensembl.org/info/genome/variation/prediction/predicted_data.html">https://www.ensembl.org/info/genome/variation/prediction/predicted_data.html</a> to help you, which of these consequences is predicted to have a low impact on the protein?</p>
 
-<p class="answer">Use the &quot;Input external references ID list&quot; filter and select &quot;Exon ID&quot; from the dropdown menu. You can use the Upstream flank/Downstream flank attributes to do this. Some tools don't like non-alphanumeric characters in FASTA files, so just have the exon id in the sequence headers</p>
-
-<p class="answer">Attributes</p>
-<ul class="answer">
-<li>Exon stable ID</li>
-<li>Exon sequences</li>
-<li>Upstream flank [10]</li>
-<li>Downstream flank [10]</li>
-</ul>
-
-<p>Use these sequences to select sgRNA binding sites. Use any CRISPR design tool you want (e.g. <a href="https://eu.idtdna.com/site/order/designtool/index/CRISPR_CUSTOM">https://eu.idtdna.com/site/order/designtool/index/CRISPR_CUSTOM</a> or <a href="https://www.crisprscan.org/sequence/">https://www.crisprscan.org/sequence/</a>).</p>
-
-<p><strong>Note:</strong> For the IDT tool you will need to edit the FASTA file to remove characters from the sequence names that the tool doesn't accept. The easiest thing to do is to only select the exon ID for the sequence header.</p>
-
-<p>Select several guide RNA sequences.  Visualise the gRNA sequences using Ensembl BLAST. Choose BLASTN with &quot;Normal&quot; search sensitivity. Check that the cut-site will be inside the exon and not too close to the splice acceptor/donor. The cut-site is 6 bp from the end of the sgRNA sequence including PAM (e.g. NNNNNNNNNNNNNNNNN|NNNNGG).</p>
-
-<p>Check for off-targets in other tfap2 genes. If your CRISPR design tool of choice doesn't do off-target prediction, you could use BLASTN and change the search sensitiivty to &quot;Short sequences&quot; to find sequences similar to the guide sequence.</p>
+<p>Have any of these three variants been found before?</p>
 
     </main>
   </div>

@@ -79,47 +79,69 @@
     <main>
       <h1>Zebrafish Genome Literacy Workshop 2023</h1>
 
-<h2>Exercise 3 - CRISPR design</h2>
+<h2>Exercise 5 - exploring data</h2>
 
-<p>Imagine you are planning an experiment to knock out the tfap2a gene using CRISPR/Cas9.</p>
+<p>First we will make a BED file. Using the InterPro website to find out, what are the accessions for the protein domains &quot;Zinc finger, C2H2C-type&quot; and &quot;Zinc finger, PHD-finger&quot;?</p>
 
-<p>Find the Gene page for tfap2a.</p>
+<p class="answer">IPR002515 and IPR019787</p>
 
-<p>How many different transcripts are there?</p>
+<p>Use BioMart to filter zebrafish genes for genes containing those domains. How many genes are there?</p>
 
-<p class="answer">6.</p>
+<p class="answer">116 genes.</p>
 
-<p>We want to target exons that appear in all transcripts. Find the stable IDs of exons which are present in all transcripts of tfap2a.</p>
+<p>Export the following attributes for these genes - in order - as a TSV file. Make sure you click &quot;Unique results only&quot;.</p>
 
-<ul class="answer">
-<li>ENSDARE00000597910</li>
-<li>ENSDARE00000597893</li>
-<li>ENSDARE00000597878</li>
-<li>ENSDARE00000597872</li>
-<li>ENSDARE00000597861</li>
+<ul>
+<li>Chromosome/scaffold name</li>
+<li>Gene start (bp)</li>
+<li>Gene end (bp)</li>
+<li>Gene name</li>
 </ul>
 
-<p class="answer">Exons may look the same on the graphical view on the Gene page, but may have slightly different start and end sites. You can use the Exons page for each transcript to compare the exons. Exons with identical start and end sites will have the same exon ID.</p>
+<p>Change the filename from &quot;mart_export.txt&quot; to e.g. &quot;zinc-finger-genes.bed&quot;. Go to the zebrafish &quot;Whole genome&quot; view by clicking on &quot;View karyotype&quot; on the zebrafish home page. Use &quot;Configure this page&quot; to upload your BED file. Customise the display so as to show the features on the right side of the chromosomes, rather than the left. Try making another BED file using BioMart and display it on the same display.</p>
 
-<p>Use Biomart to download the sequence for these exons. Use the exon IDs you collected above to download the exons sequences with 10 bp of intron sequence on either side. The 10 bp allows you to find CRISPR sites that overlap a small portion of the intron, but still have their cut-site within the exon.</p>
+<p>Next let's imagine we are doing a positional cloning experiment. You have found a mutant that shows skeletal muscle defects and can't swim very well. You've mapped the genomic locus to chromosome 20, somewhere between 830,000 and 3,200,000 bp. Use BioMart to find the phenotypes associated with all genes in that interval. Can you find a candidate gene?</p>
 
-<p class="answer">Use the &quot;Input external references ID list&quot; filter and select &quot;Exon ID&quot; from the dropdown menu. You can use the Upstream flank/Downstream flank attributes to do this. Some tools don't like non-alphanumeric characters in FASTA files, so just have the exon id in the sequence headers</p>
+<p class="answer">lama2, laminin alpha 2.</p>
 
-<p class="answer">Attributes</p>
-<ul class="answer">
-<li>Exon stable ID</li>
-<li>Exon sequences</li>
-<li>Upstream flank [10]</li>
-<li>Downstream flank [10]</li>
+<p>Next, let's try to find zebrafish orthologues of human genes. In BioMart, choose &quot;Human genes (GRCh38.p13)&quot; as your dataset. Filter genes by these &quot;Gene stable ID(s)&quot;:</p>
+
+<p>ENSG00000133424<br>
+ENSG00000181027<br>
+ENSG00000106692<br>
+ENSG00000009830<br>
+ENSG00000130714<br>
+ENSG00000173540<br>
+ENSG00000162885<br>
+ENSG00000085998<br>
+ENSG00000173120</p>
+
+<p>In attributes, look for the section where you can choose the following attributes:</p>
+
+<ul>
+<li>Gene stable ID</li>
+<li>Gene name</li>
+<li>Zebrafish gene stable ID</li>
+<li>Zebrafish gene name</li>
+<li>Zebrafish homology type</li>
+<li>%id. target Zebrafish gene identical to query gene</li>
+<li>%id. query gene identical to target Zebrafish gene</li>
+<li>Zebrafish orthology confidence [0 low, 1 high]</li>
 </ul>
 
-<p>Use these sequences to select sgRNA binding sites. Use any CRISPR design tool you want (e.g. <a href="https://eu.idtdna.com/site/order/designtool/index/CRISPR_CUSTOM">https://eu.idtdna.com/site/order/designtool/index/CRISPR_CUSTOM</a> or <a href="https://www.crisprscan.org/sequence/">https://www.crisprscan.org/sequence/</a>).</p>
+<p>How many of the genes have a one2one relationship and how many a one2many relationship?</p>
 
-<p><strong>Note:</strong> For the IDT tool you will need to edit the FASTA file to remove characters from the sequence names that the tool doesn't accept. The easiest thing to do is to only select the exon ID for the sequence header.</p>
+<p class="answer">8 have 1:1 and 1 has 1:many.</p>
 
-<p>Select several guide RNA sequences.  Visualise the gRNA sequences using Ensembl BLAST. Choose BLASTN with &quot;Normal&quot; search sensitivity. Check that the cut-site will be inside the exon and not too close to the splice acceptor/donor. The cut-site is 6 bp from the end of the sgRNA sequence including PAM (e.g. NNNNNNNNNNNNNNNNN|NNNNGG).</p>
+<p>How many of the orthologues are high confidence and how many are low?</p>
 
-<p>Check for off-targets in other tfap2 genes. If your CRISPR design tool of choice doesn't do off-target prediction, you could use BLASTN and change the search sensitiivty to &quot;Short sequences&quot; to find sequences similar to the guide sequence.</p>
+<p class="answer">9 are high and 1 is low.</p>
+
+<p>Can you find out which phenotype most of the human genes have in common?</p>
+
+<p class="answer">Muscular dystrophy.</p>
+
+<p>Now do the reverse. Pick five of your favourite zebrafish genes and find human orthologues for them.</p>
 
     </main>
   </div>
